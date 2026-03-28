@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+opencv-python
+ultralytics
+numpy
+scikit-learn
+python-multipart
+aiofiles
+pydantic
+python-dotenv

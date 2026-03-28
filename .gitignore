@@ -1,0 +1,32 @@
+# Python virtual environments
+backend/venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment files
+.env
+backend/.env
+
+# Frontend dependencies/build
+frontend/node_modules/
+frontend/dist/
+
+# Generated backend outputs
+backend/assets/output_frames/
+backend/assets/output_videos/
+backend/assets/unlabeled_captures/
+
+# Optional large assets
+backend/assets/input_videos/
+backend/weights/
+backend/yolov8n.pt
+
+# VS Code / OS files
+.vscode/
+Thumbs.db
+.DS_Store
