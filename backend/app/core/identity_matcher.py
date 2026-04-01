@@ -2,6 +2,7 @@ import math
 from app.utils.color_utils import color_similarity
 from app.core.gait_analyzer import GaitAnalyzer
 
+
 class IdentityMatcher:
     def __init__(self, threshold: float = 0.70):
         self.threshold = threshold
@@ -34,7 +35,6 @@ class IdentityMatcher:
         if gait_a is not None and gait_b is not None:
             gait_score = self.gait_analyzer.compare_features(gait_a, gait_b)
 
-        # Updated weights with gait
         score = (
             0.30 * upper +
             0.25 * lower +
@@ -63,4 +63,5 @@ class IdentityMatcher:
 
         if best_score >= self.threshold:
             return best_id, best_score
+
         return None, best_score
