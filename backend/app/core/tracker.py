@@ -18,13 +18,17 @@ class SimpleTracker:
             "last_seen_frame": int(self.frame_index),
             "confidence": float(confidence),
             "status": "active",
-
-            # gait-related history
-            "trajectory": [(
-                float(center[0]), float(center[1])
-            )] if center else [],
+            "trajectory": [(float(center[0]), float(center[1]))] if center else [],
             "height_history": [float(bbox[3] - bbox[1])],
             "speed_history": [],
+            "gait_features": {
+                "avg_speed": 0.0,
+                "direction_x": 0.0,
+                "direction_y": 0.0,
+                "vertical_oscillation": 0.0,
+                "height_variation": 0.0,
+                "movement_confidence": 0.0,
+            },
         }
         return person_id
 
@@ -72,6 +76,9 @@ class SimpleTracker:
                 "confidence": float(p["confidence"]),
                 "status": str(p["status"]),
                 "last_seen_frame": int(p["last_seen_frame"]),
+                "movement_confidence": float(
+                    p.get("gait_features", {}).get("movement_confidence", 0.0)
+                ),
             }
             for p in self.people.values()
             if p["status"] == "active"
